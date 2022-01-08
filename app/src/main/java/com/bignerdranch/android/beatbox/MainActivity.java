@@ -14,15 +14,21 @@ import android.view.ViewGroup;
 import com.bignerdranch.android.beatbox.databinding.ActivityMainBinding;
 import com.bignerdranch.android.beatbox.databinding.ListItemSoundBinding;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    private BeatBox beatBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        beatBox = new BeatBox(getAssets());
+
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(), 3));
-        binding.recyclerView.setAdapter(new SoundAdapter());
+        binding.recyclerView.setAdapter(new SoundAdapter(beatBox.sounds));
     }
 
     private class SoundHolder extends RecyclerView.ViewHolder{
@@ -32,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class SoundAdapter extends RecyclerView.Adapter<SoundHolder>{
+
+        private ArrayList<Sound> sounds;
+
+        public SoundAdapter (ArrayList<Sound> currentSounds) {
+            sounds = currentSounds;
+        }
 
         @NonNull
         @Override
@@ -50,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return 0;
+            return sounds.size();
         }
     }
 }
