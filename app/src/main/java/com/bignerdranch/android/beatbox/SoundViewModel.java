@@ -1,13 +1,18 @@
 package com.bignerdranch.android.beatbox;
 
-public class SoundViewModel {
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
-    Sound sound;
+public class SoundViewModel extends BaseObservable {
+
+    private Sound sound;
 
     public void setSound(Sound sound) {
         this.sound = sound;
+        notifyChange();
     }
 
+    @Bindable
     public String getTitle(){
         return sound.name;
     }

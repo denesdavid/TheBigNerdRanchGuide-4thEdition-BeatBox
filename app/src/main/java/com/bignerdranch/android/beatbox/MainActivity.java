@@ -32,8 +32,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class SoundHolder extends RecyclerView.ViewHolder{
+
+        private ListItemSoundBinding currentBinding;
+
         public SoundHolder(ListItemSoundBinding binding) {
             super(binding.getRoot());
+            binding.setViewModel(new SoundViewModel());
+            currentBinding = binding;
+        }
+
+        void bind(Sound sound){
+            currentBinding.getViewModel().setSound(sound);
+            currentBinding.executePendingBindings();
         }
     }
 
@@ -57,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull SoundHolder holder, int position) {
-
+            Sound sound = sounds.get(position);
+            holder.bind(sound);
         }
 
         @Override

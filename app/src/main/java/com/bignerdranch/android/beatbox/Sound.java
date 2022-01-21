@@ -12,6 +12,6 @@ public class Sound {
         String nameWithExtension = splittedPath[splittedPath.length-1];
         String nameWithoutExtension = nameWithExtension.
                 substring(0, nameWithExtension.length() - WAV.length());
-        name = nameWithExtension;
+        name = nameWithoutExtension;
     }
 }
