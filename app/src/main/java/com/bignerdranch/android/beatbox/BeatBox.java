@@ -29,6 +29,10 @@ public class BeatBox {
         }
     }
 
+    void release(){
+        soundPool.release();
+    }
+
     private ArrayList<Sound> loadSounds() {
         ArrayList<Sound> sounds = new ArrayList<>();
         try {

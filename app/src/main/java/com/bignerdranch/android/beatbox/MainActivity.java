@@ -31,13 +31,19 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setAdapter(new SoundAdapter(beatBox.sounds));
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        beatBox.release();
+    }
+
     private class SoundHolder extends RecyclerView.ViewHolder{
 
         private ListItemSoundBinding currentBinding;
 
         public SoundHolder(ListItemSoundBinding binding) {
             super(binding.getRoot());
-            binding.setViewModel(new SoundViewModel());
+            binding.setViewModel(new SoundViewModel(beatBox));
             currentBinding = binding;
         }
 
