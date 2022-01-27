@@ -17,6 +17,10 @@ public class BeatBoxViewModel extends BaseObservable {
         this.beatBox = beatBox;
     }
 
+    public BeatBox getBeatBox() {
+        return this.beatBox;
+    }
+
     public void setPlayBackSpeed(float playBackSpeed) {
         this.playBackSpeed = playBackSpeed;
         notifyChange();
