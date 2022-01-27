@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.bignerdranch.android.beatbox.BeatBoxViewModel"/>
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Playback Speed"
+            android:text="@{@string/playback_speed + viewModel.getPlayBackSpeed + @string/percent}"
             android:translationZ="1dp"
             app:layout_constraintStart_toStartOf="@+id/seekBar"
             app:layout_constraintTop_toTopOf="@+id/seekBar" />
@@ -26,7 +31,7 @@
         <SeekBar
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
-
+            android:onProgressChanged="@{viewModel::onProgressChanged}"
             android:layout_height="100dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

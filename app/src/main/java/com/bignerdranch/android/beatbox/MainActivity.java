@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         beatBox = new BeatBox(getAssets());
 
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setViewModel(new BeatBoxViewModel(beatBox));
         binding.recyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(), 3));
         binding.recyclerView.setAdapter(new SoundAdapter(beatBox.sounds));
     }
