@@ -15,7 +15,7 @@ public class BeatBox {
     private AssetManager assets;
     private final int MAX_SOUNDS = 5;
     private SoundPool soundPool = new SoundPool.Builder().setMaxStreams(MAX_SOUNDS).build();
-    public float playBackSpeed = 1.0f;
+    public float playBackSpeed = 0.0f;
     ArrayList<Sound> sounds;
 
 
